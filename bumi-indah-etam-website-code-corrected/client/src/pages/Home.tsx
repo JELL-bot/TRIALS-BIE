@@ -336,11 +336,31 @@ export default function Home() {
   const [language, setLanguage] = useState<Locale>("en");
   const c = copy[language];
 
-  function submitInquiry(event: FormEvent<HTMLFormElement>) {
+function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    toast.success(c.success, { duration: 5000 });
-    event.currentTarget.reset();
-  }
+  const formData = new FormData(event.currentTarget);
+
+  const name = formData.get("name")?.toString().trim() || "-";
+  const company = formData.get("company")?.toString().trim() || "-";
+  const email = formData.get("email")?.toString().trim() || "-";
+  const phone = formData.get("phone")?.toString().trim() || "-";
+  const needs = formData.get("needs")?.toString().trim() || "-";
+
+  const message = [
+    "Hello BIE Warehouse, I would like to make an inquiry.",
+    "",
+    `Name: ${name}`,
+    `Company: ${company}`,
+    `Email: ${email}`,
+    `Phone: ${phone}`,
+    `Requirements: ${needs}`,
+  ].join("\n");
+
+  const whatsappNumber = "6281298981300";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message )}`;
+
+  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+}
 
   return (
     <div className="site-shell" lang={language === "zh" ? "zh-CN" : language}>
