@@ -150,6 +150,29 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
   border-bottom: 16px solid transparent;
   border-right: 10px solid #123b59;
 }
+
+/* Blur only cards marked as in development */
+.space-card.is-development .space-card-content {
+  filter: blur(10px);
+  opacity: 0.28;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* A light layer above the blurred card */
+.space-card.is-development::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(244, 242, 236, 0.18);
+  pointer-events: none;
+}
+
+/* Keep the IN DEVELOPMENT flag sharp, above the blur */
+.space-card.is-development .development-flag {
+  z-index: 5;
+}
 .space-card:hover { transform: translateY(-7px); box-shadow: 0 14px 32px rgba(0,0,0,.16); }
 .card-2 { background: #e9e5da; margin-top: 28px; }
 .card-3 { background: #dfe7e9; color: var(--dock); margin-top: 56px; border-top: 5px solid var(--orange); }
