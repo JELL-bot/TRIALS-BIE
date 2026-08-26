@@ -1,5 +1,5 @@
 /**
- * Harbour Ledger design reminder: Contemporary industrial editorial. Use Dockline Blue,
+ * BIE design reminder: Contemporary industrial editorial. Use Dockline Blue,
  * warehouse ivory, restrained safety orange, precise asymmetry, and operational clarity.
  */
 import { FormEvent, useState } from "react";
