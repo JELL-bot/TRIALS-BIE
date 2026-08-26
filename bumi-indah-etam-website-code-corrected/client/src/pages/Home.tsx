@@ -451,21 +451,52 @@ function submitInquiry(event: FormEvent<HTMLFormElement>) {
             <p>{c.spacesText}</p>
           </div>
           <div className="space-grid">
-            {c.units.map((unit, index) => (
-              <article className={`space-card card-${index + 1}`} key={unit.name}>
-                <div className="space-topline"><span><img src={assets.logo} alt="" />{c.example}</span><span>0{index + 1}</span></div>
+            {c.units.map((unit, index) => {
+              const isInDevelopment = index === 1 || index === 2;
+
+              return (
+            <article
+              className={`space-card card-${index + 1}${isInDevelopment ? " is-development" : ""}`}
+              key={unit.name}
+            >
+              <div className="space-card-content">
+                <div className="space-topline">
+                  <span>
+                    <img src={assets.logo} alt="" />
+                    {c.example}
+                  </span>
+                  <span>0{index + 1}</span>
+                </div>
+        
                 <h3>{unit.name}</h3>
+        
                 <div className="space-facts">
                   <div><p>{c.size}</p><strong>{unit.size}</strong></div>
                   <div><p>{c.storage}</p><strong>{unit.use}</strong></div>
                   <div><p>{c.access}</p><strong>{unit.access}</strong></div>
                 </div>
+        
                 <div className="space-footer">
                   <span>{unit.rate}</span>
-                  <button type="button" onClick={() => scrollToId("contact")} aria-label={`${c.viewDetails}: ${unit.name}`}><ArrowUpRight size={18} /></button>
+                  <button
+                    type="button"
+                    onClick={() => scrollToId("contact")}
+                    aria-label={`${c.viewDetails}: ${unit.name}`}
+                  >
+                    <ArrowUpRight size={18} />
+                  </button>
                 </div>
-              </article>
-            ))}
+              </div>
+        
+              {isInDevelopment && (
+                <div className="development-overlay" role="status" aria-label="In development">
+                  <span>IN DEVELOPMENT</span>
+                  <p>New warehouse space coming soon</p>
+                </div>
+              )}
+            </article>
+          );
+        })}           
           </div>
         </section>
 
