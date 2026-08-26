@@ -120,6 +120,36 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 .section-header > p { margin: 0 0 5px; color: #cbd9df; font-size: 14px; line-height: 1.7; }
 .space-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 60px; max-width: 1240px; }
 .space-card { min-height: 422px; padding: 23px; background: rgba(255,255,255,.97); display: flex; flex-direction: column; color: var(--dock); transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out); }
+.space-card {
+  position: relative;
+  overflow: visible;
+}
+
+.development-flag {
+  position: absolute;
+  z-index: 5;
+  top: -16px;
+  right: 18px;
+  padding: 11px 15px 11px 17px;
+  background: #123b59;
+  color: white;
+  box-shadow: -5px 5px 0 #f06a32;
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+.development-flag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-right: 10px solid #123b59;
+}
 .space-card:hover { transform: translateY(-7px); box-shadow: 0 14px 32px rgba(0,0,0,.16); }
 .card-2 { background: #e9e5da; margin-top: 28px; }
 .card-3 { background: #dfe7e9; color: var(--dock); margin-top: 56px; border-top: 5px solid var(--orange); }
