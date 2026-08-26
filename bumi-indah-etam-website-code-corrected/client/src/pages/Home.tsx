@@ -455,10 +455,13 @@ function submitInquiry(event: FormEvent<HTMLFormElement>) {
               const isInDevelopment = index === 1 || index === 2;
 
               return (
-            <article className={`space-card card-${index + 1}`} key={unit.name}>
+            <article
+  className={`space-card card-${index + 1}${isInDevelopment ? " is-development" : ""}`}
+  key={unit.name}
+>
               {isInDevelopment && (
-                <div className="development-flag">IN DEVELOPMENT</div>
-              )}
+  <div className="development-flag">IN DEVELOPMENT</div>
+)}
               <div className="space-card-content">
                 <div className="space-topline">
                   <span>
